@@ -1,0 +1,10 @@
+{
+  "name": "virlow-codex-plugin",
+  "private": true,
+  "description": "Virlow for Codex: encrypted notes and automatic memory.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test"
+  }
+}

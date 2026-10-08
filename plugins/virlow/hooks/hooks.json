@@ -1,0 +1,67 @@
+{
+  "description": "Virlow automatic memory: a recall instruction at session start, a turn counter, and one save reminder before stopping. The script never reads transcripts or calls Virlow.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/virlow-memory.mjs\" session-start",
+            "commandWindows": "node \"%PLUGIN_ROOT%\\hooks\\virlow-memory.mjs\" session-start",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/virlow-memory.mjs\" prompt",
+            "commandWindows": "node \"%PLUGIN_ROOT%\\hooks\\virlow-memory.mjs\" prompt",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "^mcp__.*__(add|update)_memory$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/virlow-memory.mjs\" saved",
+            "commandWindows": "node \"%PLUGIN_ROOT%\\hooks\\virlow-memory.mjs\" saved",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/virlow-memory.mjs\" stop",
+            "commandWindows": "node \"%PLUGIN_ROOT%\\hooks\\virlow-memory.mjs\" stop",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/virlow-memory.mjs\" session-end",
+            "commandWindows": "node \"%PLUGIN_ROOT%\\hooks\\virlow-memory.mjs\" session-end",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "virlow",
+  "version": "0.1.0",
+  "description": "Connects Codex to Virlow, your end-to-end encrypted notes, and makes memory automatic: recall at the start of a task and a reminder to save what was learned.",
+  "author": {
+    "name": "Bata Labs",
+    "email": "team@batalabs.com",
+    "url": "https://virlow.com"
+  },
+  "homepage": "https://virlow.com/ai-connections.html",
+  "repository": "https://github.com/batalabs/virlow-codex-plugin",
+  "license": "UNLICENSED",
+  "keywords": [
+    "notes",
+    "memory",
+    "encryption",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json",
+      "interface": {
+        "displayName": "Virlow",
+        "shortDescription": "Encrypted notes and automatic memory",
+        "longDescription": "Connects Codex to Virlow, the end-to-end encrypted workspace for notes and connected ideas. Codex recalls what Virlow knows about your project at the start of a task, and is reminded to save durable facts you share before it stops.",
+        "developerName": "Bata Labs",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://virlow.com",
+        "privacyPolicyURL": "https://virlow.com/privacy.html",
+        "termsOfServiceURL": "https://virlow.com/terms.html",
+        "defaultPrompt": [
+          "What does Virlow remember about this project?",
+          "Tidy my Virlow memories."
+        ],
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
